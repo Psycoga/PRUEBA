@@ -1,0 +1,17 @@
+name: Escaneo ifconfig
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  hola:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Escaneo
+        run: echo "Instalando escaneo"
+      - name: Instalar nmap
+        run: sudo apt-get install nmap
+      - name: Usar nmap
+        run: nmap nmap -sV nike.com
