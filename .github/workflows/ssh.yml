@@ -1,0 +1,14 @@
+name: Verificar SSH
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  verificar_ssh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificar si SSH está instalado
+        run: |
+          ssh -V || echo "SSH no está instalado"
