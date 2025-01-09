@@ -1,13 +1,18 @@
-name: Verificar SSH
+name: Conexion SSH
 
 on:
-  push:
-    branches:
-      - main
+    push:
+        branches:
+            - main
 
 jobs:
-  verificar_ssh:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Verificar si SSH está instalado
-        run: ssh -V
+    conexion-ssh:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Instalar sshpass
+              run: sudo apt-get update && sudo apt-get install -y sshpass
+            - name: Conectar por SSH
+              run: |
+                sshpass -p ${{ secrets.PASSWORD }} ssh -o StrictHostKeyChecking=no ${{ secrets.USER }}@${{ secrets.IP }} "
+                echo 'Conexión exitosa' &&
+                echo 'Hola mundo' > davilote.txt"
