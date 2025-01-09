@@ -10,5 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Verificar si SSH está instalado
-        run: |
-          ssh -V || echo "SSH no está instalado"
+        run: ssh -V
